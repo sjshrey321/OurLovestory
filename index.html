@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy 1 Month Anniversary \n Happy 2 month Knowing each other.</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fff0e6, #ffe6f0);
+      color: #333;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 50px 20px 20px;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #ff4d4d;
+    }
+    .typewriter {
+      font-size: 1.2em;
+      font-style: italic;
+      color: #cc0052;
+      white-space: pre-wrap;
+      border-right: 3px solid #cc0052;
+      animation: blink 0.7s step-end infinite;
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .timeline {
+      padding: 40px;
+      max-width: 600px;
+      margin: auto;
+    }
+    .event {
+      background: #fff;
+      padding: 15px 20px;
+      margin: 10px 0;
+      border-left: 5px solid #ff9999;
+      border-radius: 8px;
+    }
+    .carousel {
+      display: none;
+      padding: 10px;
+    }
+    .carousel-container {
+      position: relative;
+      margin-top: 10px;
+    }
+    .carousel img {
+      width: 100%;
+      max-height: 350px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: none;
+    }
+    .carousel img.active {
+      display: block;
+    }
+    .carousel .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255, 255, 255, 0.7);
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      padding: 5px 10px;
+      z-index: 10;
+    }
+    .arrow.left { left: 10px; }
+    .arrow.right { right: 10px; }
+
+    .countdown {
+      text-align: center;
+      font-size: 1.5em;
+      padding: 30px 0;
+      color: #ff3300;
+    }
+
+    audio, video {
+      display: block;
+      margin: 20px auto;
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .heart {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: url('hearts.png') no-repeat;
+      background-size: contain;
+      animation: float 10s infinite ease-in;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) translateX(0); }
+      100% { transform: translateY(-100vh) translateX(100px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts">
+    <div class="heart" style="left:10%; animation-delay: 0s;"></div>
+    <div class="heart" style="left:30%; animation-delay: 2s;"></div>
+    <div class="heart" style="left:50%; animation-delay: 4s;"></div>
+    <div class="heart" style="left:70%; animation-delay: 1s;"></div>
+    <div class="heart" style="left:90%; animation-delay: 3s;"></div>
+  </div>
+
+  <header>
+    <h1>Happy 1 Month Anniversary ❤️ </h1>
+    <h1>Happy 2 Month Knowing each other. ❤️</h1>
+    <div class="typewriter" id="typedText"></div>
+  </header>
+
+  <div class="timeline">
+    <div class="event" onclick="toggleCarousel('carousel1')">💬 First Text – April 12, 2025</div>
+    <div class="carousel" id="carousel1">
+        <div class="carousel-container" id="container-carousel1"></div>
+    </div>
+    <div class="event" onclick="toggleCarousel('carousel2')">💘 Made it official – May 13, 2025</div>
+    <div class="carousel" id="carousel2">
+      <div class="carousel-container" id="container-carousel2"></div>
+    </div>
+    <div class="event" onclick="toggleCarousel('carousel3')">📞 Endless late night calls and laughs</div>
+    <div class="carousel" id="carousel3">
+      <div class="carousel-container" id="container-carousel3"></div>
+    </div>
+    <div class="event" onclick="toggleCarousel('carousel4')">🎉 Introduced to my family – June 8, 2025</div>
+    <div class="carousel" id="carousel4">
+      <div class="carousel-container" id="container-carousel4"></div>
+    </div>
+  </div>
+
+  <div class="countdown">
+  ⏳ Time since our first message on April 12, 2025 :<br>
+  <span id="sinceFirstText"></span>
+  </div>>
+
+  <!-- Local MP3  -->
+  <audio controls>
+    <source src= "audiofile.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Local .MOV video  -->
+  <!-- <video width="560" height="315" controls>
+    <source src="memory.mov" type="video/mp4">
+    Your browser does not support the video tag.
+  </video> -->
+
+  <script>
+    const text = "You are my favorite hello and hardest goodbye.\nEvery moment we share, even virtually, is a piece of forever I cherish. \n My one and only Bear Minimum 💖";
+    let i = 0;
+    const speed = 50;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typedText").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+    typeWriter();
+
+    const firstTextDate = new Date("2025-04-12T19:00:00");
+
+    function updateSinceTimer() {
+    const now = new Date();
+    const diff = now - firstTextDate;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("sinceFirstText").innerHTML = `${days} days ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateSinceTimer, 1000);
+    
+    //📸 Image Carousels
+    function toggleCarousel(id) {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function setupCarousel(containerId, images) {
+      const container = document.getElementById(containerId);
+      let current = 0;
+      container.innerHTML = `
+        <button class="arrow left" onclick="changeSlide('${containerId}', -1)">&#8592;</button>
+        ${images.map((img, idx) => `<img src="${img}" class="${idx === 0 ? 'active' : ''}">`).join('')}
+        <button class="arrow right" onclick="changeSlide('${containerId}', 1)">&#8594;</button>
+      `;
+    }
+
+    function changeSlide(containerId, dir) {
+      const container = document.getElementById(containerId);
+      const imgs = container.querySelectorAll("img");
+      let currentIndex = Array.from(imgs).findIndex(img => img.classList.contains("active"));
+      imgs[currentIndex].classList.remove("active");
+      let newIndex = (currentIndex + dir + imgs.length) % imgs.length;
+      imgs[newIndex].classList.add("active");
+    }
+
+    // ✅ Image arrays (just replace with your own image links!)
+    const imagesCarousel1 = [
+      "hey.jpg",
+      "ilikeit.jpg",
+      "rizz.jpg"
+    ];
+    const imagesCarousel2 = [
+      "p3.jpeg",
+      "p1.jpg",
+      "p2.jpg",
+      "p4.jpeg",
+      "p5.png"
+    ];
+
+    const imagesCarousel3 = [
+      "ft1.jpg",
+      "ft2.jpg",
+      "ft3.png",
+      "ft4.png",
+      "ft5.png",
+      "ft6.png",
+      "ft7.png"
+
+    ];
+
+    const imagesCarousel4 = [
+      "fm1.png",
+      "fm2.png",
+      "fm3.png",
+      "fm4.png",
+      "fm5.png",
+      "fm6.png",
+    ];
+
+    setupCarousel("container-carousel1", imagesCarousel1);
+    setupCarousel("container-carousel2", imagesCarousel2);
+    setupCarousel("container-carousel3", imagesCarousel3);
+    setupCarousel("container-carousel4", imagesCarousel4);
+
+  </script>
+</body>
+</html>
+
+
+
+<!-- Updated Code -> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Love Story</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fff0e6, #ffe6f0);
+      color: #333;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 50px 20px 20px;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #ff4d4d;
+    }
+    .typewriter {
+      font-size: 1.2em;
+      font-style: italic;
+      color: #cc0052;
+      white-space: pre-wrap;
+      border-right: 3px solid #cc0052;
+      animation: blink 0.7s step-end infinite;
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    .timeline {
+      padding: 40px;
+      max-width: 700px;
+      margin: auto;
+    }
+    .event {
+      background: #fff;
+      padding: 15px 20px;
+      margin: 10px 0;
+      border-left: 5px solid #ff9999;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .carousel {
+      display: none;
+      padding: 10px;
+    }
+    .carousel-container {
+      position: relative;
+      margin-top: 10px;
+    }
+    .carousel img {
+      width: 100%;
+      max-height: 350px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: none;
+    }
+    .carousel img.active {
+      display: block;
+    }
+    .carousel .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255, 255, 255, 0.7);
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      padding: 5px 10px;
+      z-index: 10;
+    }
+    .arrow.left { left: 10px; }
+    .arrow.right { right: 10px; }
+    .countdown {
+      text-align: center;
+      font-size: 1.5em;
+      padding: 30px 0;
+      color: #ff3300;
+    }
+    audio, video {
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Our Love Story ❤️</h1>
+    <div class="typewriter" id="typedText"></div>
+  </header>
+
+  <div class="timeline">
+    <div class="event" onclick="toggleCarousel('carousel1')">💬 First Text – April 12, 2025</div>
+    <div class="carousel" id="carousel1">
+      <div class="carousel-container" id="container-carousel1"></div>
+    </div>
+
+    <div class="event" onclick="toggleCarousel('carousel2')">💘 Made it official – May 11, 2025</div>
+    <div class="carousel" id="carousel2">
+      <div class="carousel-container" id="container-carousel2"></div>
+    </div>
+  </div>
+
+  <div class="countdown">
+    ⏳ Time since our first message on April 12, 2025 – 7:00 PM:<br>
+    <span id="sinceFirstText"></span><br><br>
+    ⏳ Countdown to our next meet:<br>
+    <span id="countdown"></span>
+  </div>
+
+  // Local MP3 
+  <audio controls>
+    <source src="surprise.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  //Local .MOV video 
+  <video width="560" height="315" controls>
+    <source src="memory.mov" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    // ✨ Typewriter text
+    const text = "You are my favorite hello and hardest goodbye.\nEvery moment we share, even virtually, is a piece of forever I cherish. 💖";
+    let i = 0;
+    let speed = 50;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typedText").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+    typeWriter();
+
+    // 🕰️ Time since first message
+    const firstTextDate = new Date("2025-04-12T19:00:00");
+    function updateSinceTimer() {
+      const now = new Date();
+      const diff = now - firstTextDate;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      document.getElementById("sinceFirstText").innerHTML = `${days} days ${hours}h ${minutes}m ${seconds}s`;
+    }
+    setInterval(updateSinceTimer, 1000);
+
+    // 🎯 Countdown to next meet
+    const targetDate = new Date("2025-07-01T07:28:13");
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      document.getElementById("countdown").innerHTML = `${days} days ${hours}h ${minutes}m ${seconds}s`;
+    }
+    setInterval(updateCountdown, 1000);
+
+    // 📸 Image Carousels
+    function toggleCarousel(id) {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function setupCarousel(containerId, images) {
+      const container = document.getElementById(containerId);
+      let current = 0;
+      container.innerHTML = `
+        <button class="arrow left" onclick="changeSlide('${containerId}', -1)">&#8592;</button>
+        ${images.map((img, idx) => `<img src="${img}" class="${idx === 0 ? 'active' : ''}">`).join('')}
+        <button class="arrow right" onclick="changeSlide('${containerId}', 1)">&#8594;</button>
+      `;
+    }
+
+    function changeSlide(containerId, dir) {
+      const container = document.getElementById(containerId);
+      const imgs = container.querySelectorAll("img");
+      let currentIndex = Array.from(imgs).findIndex(img => img.classList.contains("active"));
+      imgs[currentIndex].classList.remove("active");
+      let newIndex = (currentIndex + dir + imgs.length) % imgs.length;
+      imgs[newIndex].classList.add("active");
+    }
+
+    // ✅ Image arrays (just replace with your own image links!)
+    const imagesCarousel1 = [
+      "https://via.placeholder.com/600x350?text=First+Message",
+      "https://via.placeholder.com/600x350?text=Late+Night+Chats",
+      "https://via.placeholder.com/600x350?text=Cute+Emojis"
+    ];
+    const imagesCarousel2 = [
+      "https://via.placeholder.com/600x350?text=Official+Day",
+      "https://via.placeholder.com/600x350?text=Feeling+Loved"
+    ];
+
+    setupCarousel("container-carousel1", imagesCarousel1);
+    setupCarousel("container-carousel2", imagesCarousel2);
+  </script>
+</body>
+</html>
