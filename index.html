@@ -105,6 +105,24 @@
       animation: float 10s infinite ease-in;
     }
 
+    .video-row {
+      display: flex;
+      justify-content: center;     /* center them horizontally */
+      gap: 10px;                   /* reduce space between videos */
+      align-items: flex-start;
+      flex-wrap: nowrap;           /* prevent wrap if not wanted */
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .video-row video {
+      max-width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      display: block;
+    }
+
     @keyframes float {
       0% { transform: translateY(100vh) translateX(0); }
       100% { transform: translateY(-100vh) translateX(100px); }
@@ -150,17 +168,27 @@
   <span id="sinceFirstText"></span>
   </div>>
 
+  <div class="timeline"> <div class="event">Something Special for you to hear</div> </div>
+
   <!-- Local MP3  -->
   <audio controls>
     <source src= "audiofile.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
+  <div class="timeline"> <div class="event">Something Special for you to Watch</div> </div>
+
   <!-- Local .MOV video  -->
+   <div class="video-row">
   <video width="560" height="315" controls>
     <source src="memory.MP4" type="video/mp4">
     Your browser does not support the video tag.
   </video> 
+  <video width="560" height="315" controls>
+    <source src="memory2.mov" type="video/mp4">
+    Your browser does not support the video tag.
+  </video> 
+  </div>
 
   <script>
     const text = "You are my favorite hello and hardest goodbye.\nEvery moment we share, even virtually, is a piece of forever I cherish. \n My one and only Bear Minimum 💖";
